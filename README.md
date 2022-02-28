@@ -48,13 +48,13 @@ titik_menjadi_indeks
 4. Lakukan reset kernel pada vscode/_code editor_ Anda
 5. Klik _run all_ untuk melihat visualisasi data
 
-## Cara Menggunakan Fungsi myConvexHull untuk Program Anda
+## Cara Menggunakan Fungsi myConvexHull pada Program Anda
 1. Lakukan _import_ fungsi pada _file_ program Anda dengan cara mengetikan _from file_myConvexHull import myConvexHull_
 2. Simpan _output_ di dalam suatu variabel
 3. Tampilkan visualisasi output menggunakan matplotlib, Anda dapat melihat file main.ipynb pada _folder_ src di dalam repository ini sebagai referensinya
 
 ## Author / Identitas Pembuat
-Nama  : Hana Fathiyah
-NIM   : 1350047
-Kelas : K02
-Email : 13520047@std.stei.itb.ac.id
+- Nama  : Hana Fathiyah
+- NIM   : 1350047
+- Kelas : K02
+- Email : 13520047@std.stei.itb.ac.id
