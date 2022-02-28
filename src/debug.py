@@ -1,8 +1,7 @@
-from convex_hull_2 import convex_hull_2
+from convex_hull_by_hana import myConvexHull
+from convex_hull_by_hana import fungsi_convex_hull_atas
+from convex_hull_by_hana import membuat_area
 
 import numpy as np
-var1 = np.array([4.3, 3])
-var2 = np.array([5.2, 4.1])
-var3 = [np.array([4.4, 3.2]), np.array([4.6, 3.4]), np.array([4.6, 3.6])]
-
-convex_hull_2(var1,var2,var3,"atas")
+tes = [np.array([1,2]), np.array([4,3]), np.array([4,6])]
+print(fungsi_convex_hull_atas(np.array([0,0]),np.array([5,5]), tes))
