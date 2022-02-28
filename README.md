@@ -38,3 +38,23 @@ titik_menjadi_indeks
 3. Matplotlib
 4. Sklearn
 5. Numpy
+6. Jupyter Notebook
+
+
+## Cara Menggunakan Program
+1. Siapkan _code editor_, dalam hal ini Anda dapat menggunakan vscode. Jika Anda belum memiliki vscode, Anda dapat melakukan instalasi dengan mengunduh aplikasi pada https://code.visualstudio.com/
+2. Pastikan Anda telah melakukan instalasi bahasa _Python_ pada _device_ Anda. Jika belum, Anda dapat melakukan instalasi dengan mengunduh _python_ terbaru pada https://www.python.org/ untuk pengguna windows, atau mengetikkan sudo apt install python3 untuk pengguna Linux/Ubuntu
+3. Lakukan instalasi _library_ yang diperlukan (lihat bagian _requirement program_)
+4. Lakukan reset kernel pada vscode/_code editor_ Anda
+5. Klik _run all_ untuk melihat visualisasi data
+
+## Cara Menggunakan Fungsi myConvexHull untuk Program Anda
+1. Lakukan _import_ fungsi pada _file_ program Anda dengan cara mengetikan _from file_myConvexHull import myConvexHull_
+2. Simpan _output_ di dalam suatu variabel
+3. Tampilkan visualisasi output menggunakan matplotlib, Anda dapat melihat file main.ipynb pada _folder_ src di dalam repository ini sebagai referensinya
+
+## Author / Identitas Pembuat
+Nama  : Hana Fathiyah
+NIM   : 1350047
+Kelas : K02
+Email : 13520047@std.stei.itb.ac.id
