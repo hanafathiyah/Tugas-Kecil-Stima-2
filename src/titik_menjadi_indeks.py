@@ -1,7 +1,3 @@
-from hashlib import sha1
-from turtle import shape
-
-
 def titik_menjadi_indeks(titik_x, titik_y, array_of_titik):
     for i in range(array_of_titik.shape[0]):
         for j in range(array_of_titik.shape[1]):

@@ -7,8 +7,6 @@ def convex_hull_2(titik1, titik2, area, area_titik):
     # mengecek apakah salah satu dari ketiga elemen tersebut kosong atau tidak
     if (area == [] or titik1 is None or titik2 is None):
         return []
-    elif len(area) == 1:
-        return(area)
 
     convex_hull_baru = []
 
@@ -30,21 +28,15 @@ def convex_hull_2(titik1, titik2, area, area_titik):
     convex_hull_baru = convex_hull_baru + [titik_terjauh]
 
     # menghapus titik terjauh yang sudah terdata
-    # np.delete(area, idx_titik_terjauh)
+    np.delete(area, idx_titik_terjauh)
 
     # membuat area
     titik1atas, titik1bawah = membuat_area(titik1, titik_terjauh, area)
     titik2atas, titik2bawah = membuat_area(titik2, titik_terjauh, area)
 
     if area_titik == "atas":
-        convex_a = convex_hull_2(titik1, titik_terjauh, titik1atas, "atas")
-        convex_b = convex_hull_2(titik_terjauh, titik2, titik2atas, "atas")
-        convex_hull_baru = convex_hull_baru + convex_a
-        convex_hull_baru = convex_hull_baru + convex_b
+        convex_hull_baru = convex_hull_baru + convex_hull_2(titik1, titik_terjauh, titik1atas, "atas")
+        convex_hull_baru = convex_hull_baru + convex_hull_2(titik_terjauh, titik2, titik2atas, "atas")
     else:
-        convex_c = convex_hull_2(titik1, titik_terjauh, titik1bawah, "bawah")
-        convex_d = convex_hull_2(titik_terjauh, titik2, titik2bawah, "bawah")
-        convex_hull_baru = convex_hull_baru + convex_c
-        convex_hull_baru = convex_hull_baru + convex_d
-
-    return convex_hull_baru
+        convex_hull_baru = convex_hull_baru + convex_hull_2(titik1, titik_terjauh, titik1bawah, "bawah")
+        convex_hull_baru = convex_hull_baru + convex_hull_2(titik_terjauh, titik2, titik2bawah, "bawah")

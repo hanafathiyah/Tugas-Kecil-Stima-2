@@ -13,7 +13,7 @@ def myConvexHull(array_titik):
   # membuat array kosong untuk convex hull
   hasil_convex_hull = []
 
-  urutan_x = sorted(array_titik, key=lambda x: (x[0],x[1]))
+  urutan_x = sorted(array_titik, key=lambda x: x[0])
   titik1 = urutan_x[0] # Titik minimum
   titik2 = urutan_x[-1] # Titik maksimum
 
@@ -32,4 +32,4 @@ def myConvexHull(array_titik):
   for hasil in hasil_convex_hull:
     return_value = return_value + [titik_menjadi_indeks(hasil[0], hasil[1], array_titik), titik_menjadi_indeks(hasil[2], hasil[3], array_titik)]
   
-  return return_value
+  return hasil_convex_hull
