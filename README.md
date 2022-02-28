@@ -33,16 +33,17 @@ titik_menjadi_indeks
 
 ## Requirement Program dan Instalasi Module/Package yang Diperlukan
 ### Requirement Program
-1. Python
-2. Pandas
-3. Matplotlib
-4. Sklearn
-5. Numpy
-6. Jupyter Notebook
+Pastikan pip Anda telah di-_upgrade_, jika belum silakan ketik python -m pip install --upgrade pip pada terminal Anda
+1. Python (Lakukan instalasi melalui https://www.python.org/ atau sudo apt install python3)
+2. Pandas (pip install pandas (windows), sudo apt install python3-pip (linux))
+3. Matplotlib (pip install matplotlib (windows), sudo apt install python3-matplotlib (linux))
+4. Sklearn (pip install sklearn (windows), sudo apt install python3-sklearn (linux))
+5. Numpy (pip install numpy (windows), sudo apt install python3-numpy (linux))
+6. Jupyter Notebook (python -m pip install jupyter)
 
 
 ## Cara Menggunakan Program
-1. Siapkan _code editor_, dalam hal ini Anda dapat menggunakan vscode. Jika Anda belum memiliki vscode, Anda dapat melakukan instalasi dengan mengunduh aplikasi pada https://code.visualstudio.com/
+1. Siapkan _code editor_. Dalam hal ini, Anda dapat menggunakan vscode. Jika Anda belum memiliki vscode, Anda dapat melakukan instalasi dengan mengunduh aplikasi pada https://code.visualstudio.com/
 2. Pastikan Anda telah melakukan instalasi bahasa _Python_ pada _device_ Anda. Jika belum, Anda dapat melakukan instalasi dengan mengunduh _python_ terbaru pada https://www.python.org/ untuk pengguna windows, atau mengetikkan sudo apt install python3 untuk pengguna Linux/Ubuntu
 3. Lakukan instalasi _library_ yang diperlukan (lihat bagian _requirement program_)
 4. Lakukan reset kernel pada vscode/_code editor_ Anda
