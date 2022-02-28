@@ -22,20 +22,31 @@ def myConvexHull(array_titik):
 
   #  dnc pertama, membagi 2 area menjadi atas_garis dan bawah_garis
     atas_garis, bawah_garis = membuat_area(titik1, titik2, urutan_x)
-    hasil_convex_hull = hasil_convex_hull + convex_hull_2(titik1, titik2, atas_garis, "atas")
-    hasil_convex_hull = hasil_convex_hull + convex_hull_2(titik1, titik2, bawah_garis, "bawah")
 
-    hasil_convex_hull = sorted(hasil_convex_hull, key=lambda x: x[0])
+  # membagi dua hasil convex_hull, yaitu bagian atas dan bagian bawah
+    hasil_convex_hull_atas = []
+    hasil_convex_hull_bawah = []
+    hasil_convex_hull_atas = hasil_convex_hull + convex_hull_2(titik1, titik2, atas_garis, "atas")
+    hasil_convex_hull_bawah = hasil_convex_hull + convex_hull_2(titik1, titik2, bawah_garis, "bawah")
 
-    hasil_convex_hull_as_numpy = membuat_tipe_numpy(hasil_convex_hull)
+    hasil_convex_hull_atas = sorted(hasil_convex_hull_atas, key=lambda x: x[0])
+    hasil_convex_hull_bawah = sorted(hasil_convex_hull_bawah, key=lambda x: x[0])
 
-    return_value = []
-    for i in range(len(hasil_convex_hull_as_numpy) - 1):
-        return_value = return_value + [[titik_menjadi_indeks(hasil_convex_hull_as_numpy[i], array_titik),titik_menjadi_indeks(hasil_convex_hull_as_numpy[i+1], array_titik)]]
+    hasil_convex_hull_atas_as_numpy = membuat_tipe_numpy(hasil_convex_hull_atas)
+    hasil_convex_hull_bawah_as_numpy = membuat_tipe_numpy(hasil_convex_hull_bawah)
+
+    return_value_atas = []
+    return_value_bawah = []
+
+    for i in range(len(hasil_convex_hull_atas_as_numpy) - 1):
+        return_value_atas = return_value_atas + [[titik_menjadi_indeks(hasil_convex_hull_atas_as_numpy[i], array_titik),titik_menjadi_indeks(hasil_convex_hull_atas_as_numpy[i+1], array_titik)]]
+
+    for i in range(len(hasil_convex_hull_bawah_as_numpy) - 1):
+        return_value_bawah = return_value_bawah + [[titik_menjadi_indeks(hasil_convex_hull_bawah_as_numpy[i], array_titik),titik_menjadi_indeks(hasil_convex_hull_bawah_as_numpy[i+1], array_titik)]]
 
     atas_garis_as_numpy = membuat_tipe_numpy(atas_garis)
     bawah_garis_as_numpy = membuat_tipe_numpy(bawah_garis)
-    return return_value, hasil_convex_hull_as_numpy, atas_garis_as_numpy, bawah_garis_as_numpy
+    return return_value_atas, return_value_bawah
 
 def membuat_area(titik1, titik2, array_titik):
 
@@ -93,18 +104,19 @@ def convex_hull_2(titik1, titik2, area, area_titik):
 
     # menghapus titik terjauh yang sudah terdata
     # area.delete(titik_terjauh)
-    np.delete(area, indeks_titik_terjauh)
+    if area != []:
+        np.delete(area, indeks_titik_terjauh)
 
     # membuat area
     titik1atas, titik1bawah = membuat_area(titik1, titik_terjauh, area)
     titik2atas, titik2bawah = membuat_area(titik2, titik_terjauh, area)
     '''
-    if area_titik == "atas":
+    if area_titik == "atas" and titik1 is not None and titik2 is not None and titik1atas is not None and titik1bawah is not None and titik2atas is not None and titik2bawah is not None and titik_terjauh is not None:
         convex_a = convex_hull_2(titik1, titik_terjauh, titik1atas, "atas")
         convex_b = convex_hull_2(titik_terjauh, titik2, titik2atas, "atas")
         convex_hull_baru = convex_hull_baru + convex_a
         convex_hull_baru = convex_hull_baru + convex_b
-    else:
+    elif area_titik == "bawah" and titik1 is not None and titik2 is not None and titik1atas is not None and titik1bawah is not None and titik2atas is not None and titik2bawah is not None and titik_terjauh is not None:
         convex_c = convex_hull_2(titik1, titik_terjauh, titik1bawah, "bawah")
         convex_d = convex_hull_2(titik_terjauh, titik2, titik2bawah, "bawah")
         convex_hull_baru = convex_hull_baru + convex_c
