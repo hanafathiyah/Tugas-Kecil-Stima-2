@@ -2,7 +2,7 @@
 Implementasi Convex Hull untuk Visualisasi Tes Linear Separability Dataset 
 dengan Algoritma  _Divide and Conquer_
 ![output](output.png)
-contoh untuk beberapa datasets dapat dilihat pada file **main.ipynb**
+* visualisasi untuk beberapa datasets dapat dilihat pada file **main.ipynb**
 
 ## Deskripsi Singkat Program yang Dibuat
 Salah satu hal penting dalam komputasi
@@ -47,7 +47,7 @@ Pastikan pip Anda telah di-_upgrade_, jika belum silakan ketik python -m pip ins
 1. Siapkan _code editor_. Dalam hal ini, Anda dapat menggunakan vscode. Jika Anda belum memiliki vscode, Anda dapat melakukan instalasi dengan mengunduh aplikasi pada https://code.visualstudio.com/
 2. Pastikan Anda telah melakukan instalasi bahasa _Python_ pada _device_ Anda. Jika belum, Anda dapat melakukan instalasi dengan mengunduh _python_ terbaru pada https://www.python.org/ untuk pengguna windows, atau mengetikkan sudo apt install python3 untuk pengguna Linux/Ubuntu
 3. Lakukan instalasi _library_ yang diperlukan (lihat bagian _requirement program_)
-4. Buka _file_ **main.ipynb**
+4. Buka _file_ **main.ipynb** pada folder src
 5. Lakukan reset kernel pada vscode/_code editor_ Anda
 6. Klik _run all_ untuk melihat visualisasi data
 
