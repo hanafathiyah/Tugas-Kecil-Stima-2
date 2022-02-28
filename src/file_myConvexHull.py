@@ -7,7 +7,12 @@ from file_titik_menjadi_indeks import titik_menjadi_indeks
 
 def myConvexHull(array_titik):
     if len(array_titik) <= 2:
-        return array_titik
+      if len(array_titik) == 0:
+        return []
+      elif len(array_titik) == 1:
+        return [[0,0]]
+      elif len(array_titik) == 2:
+        return [[0,1]]
 
   # membuat array kosong untuk convex hull (menyimpan dalam bentuk titik)
     hasil_convex_hull = []
