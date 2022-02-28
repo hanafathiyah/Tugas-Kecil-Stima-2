@@ -26,8 +26,8 @@ def myConvexHull(array_titik):
   # membagi dua hasil convex_hull, yaitu bagian atas dan bagian bawah
     hasil_convex_hull_atas = []
     hasil_convex_hull_bawah = []
-    hasil_convex_hull_atas = hasil_convex_hull + convex_hull_2(titik1, titik2, atas_garis, "atas")
-    hasil_convex_hull_bawah = hasil_convex_hull + convex_hull_2(titik1, titik2, bawah_garis, "bawah")
+    hasil_convex_hull_atas = hasil_convex_hull + convex_hull_atas(titik1, titik2, atas_garis)
+    hasil_convex_hull_bawah = hasil_convex_hull + convex_hull_bawah(titik1, titik2, bawah_garis)
 
     hasil_convex_hull_atas = sorted(hasil_convex_hull_atas, key=lambda x: x[0])
     hasil_convex_hull_bawah = sorted(hasil_convex_hull_bawah, key=lambda x: x[0])
@@ -78,13 +78,13 @@ def membuat_tipe_numpy(elemen):
     hasil = np.array(elemen)
     return hasil
 
-def convex_hull_2(titik1, titik2, area, area_titik):
+def convex_hull_atas(titik1, titik2, atas_garis):
 
     # mengecek apakah salah satu dari ketiga elemen tersebut kosong atau tidak
-    if (area == [] or titik1 is None or titik2 is None):
+    if (atas_garis == [] or titik1 is None or titik2 is None):
         return []
 
-    convex_hull_baru = []
+    convex_hull_atas = []
 
     # menghitung jarak setiap titik dari garis dan mencari titik dengan jarak terjauh
     jarak_terjauh = -1
@@ -92,7 +92,8 @@ def convex_hull_2(titik1, titik2, area, area_titik):
 
     indeks_titik = 0
     indeks_titik_terjauh = -1
-    for titik in area:
+
+    for titik in atas_garis:
         jarak_titik_i_ke_garis = jarak_titik_ke_garis(titik1, titik2, titik)
         if (jarak_titik_i_ke_garis > jarak_terjauh):
             jarak_terjauh = jarak_titik_i_ke_garis
@@ -100,29 +101,60 @@ def convex_hull_2(titik1, titik2, area, area_titik):
             indeks_titik_terjauh = indeks_titik
         indeks_titik += 1;
 
-    convex_hull_baru = convex_hull_baru + [titik_terjauh]
+    convex_hull_atas = convex_hull_atas + [titik_terjauh]
 
     # menghapus titik terjauh yang sudah terdata
     # area.delete(titik_terjauh)
-    if area != []:
-        np.delete(area, indeks_titik_terjauh)
+    if atas_garis != []:
+        np.delete(atas_garis, indeks_titik_terjauh)
 
     # membuat area
-    titik1atas, titik1bawah = membuat_area(titik1, titik_terjauh, area)
-    titik2atas, titik2bawah = membuat_area(titik2, titik_terjauh, area)
-    '''
-    if area_titik == "atas" and titik1 is not None and titik2 is not None and titik1atas is not None and titik1bawah is not None and titik2atas is not None and titik2bawah is not None and titik_terjauh is not None:
-        convex_a = convex_hull_2(titik1, titik_terjauh, titik1atas, "atas")
-        convex_b = convex_hull_2(titik_terjauh, titik2, titik2atas, "atas")
-        convex_hull_baru = convex_hull_baru + convex_a
-        convex_hull_baru = convex_hull_baru + convex_b
-    elif area_titik == "bawah" and titik1 is not None and titik2 is not None and titik1atas is not None and titik1bawah is not None and titik2atas is not None and titik2bawah is not None and titik_terjauh is not None:
-        convex_c = convex_hull_2(titik1, titik_terjauh, titik1bawah, "bawah")
-        convex_d = convex_hull_2(titik_terjauh, titik2, titik2bawah, "bawah")
-        convex_hull_baru = convex_hull_baru + convex_c
-        convex_hull_baru = convex_hull_baru + convex_d
-    '''
-    return convex_hull_baru
+    titik1atas, titik1bawah = membuat_area(titik1, titik_terjauh, atas_garis)
+    titik2atas, titik2bawah = membuat_area(titik2, titik_terjauh, atas_garis)
+
+    #convex_hull_atas = convex_hull_atas + convex_hull_atas(titik1, titik_terjauh, titik1atas)
+    #convex_hull_atas = convex_hull_atas + convex_hull_atas(titik_terjauh, titik2, titik2atas)
+
+    return convex_hull_atas
+
+def convex_hull_bawah(titik1, titik2, bawah_garis):
+
+    # mengecek apakah salah satu dari ketiga elemen tersebut kosong atau tidak
+    if (bawah_garis == [] or titik1 is None or titik2 is None):
+        return []
+
+    convex_hull_bawah = []
+
+    # menghitung jarak setiap titik dari garis dan mencari titik dengan jarak terjauh
+    jarak_terjauh = -1
+    titik_terjauh = None
+
+    indeks_titik = 0
+    indeks_titik_terjauh = -1
+
+    for titik in bawah_garis:
+        jarak_titik_i_ke_garis = jarak_titik_ke_garis(titik1, titik2, titik)
+        if (jarak_titik_i_ke_garis > jarak_terjauh):
+            jarak_terjauh = jarak_titik_i_ke_garis
+            titik_terjauh = titik
+            indeks_titik_terjauh = indeks_titik
+        indeks_titik += 1;
+
+    convex_hull_bawah = convex_hull_bawah + [titik_terjauh]
+
+    # menghapus titik terjauh yang sudah terdata
+    # area.delete(titik_terjauh)
+    if bawah_garis != []:
+        np.delete(bawah_garis, indeks_titik_terjauh)
+
+    # membuat area
+    titik1atas, titik1bawah = membuat_area(titik1, titik_terjauh, bawah_garis)
+    titik2atas, titik2bawah = membuat_area(titik2, titik_terjauh, bawah_garis)
+
+    #convex_hull_atas = convex_hull_atas + convex_hull_atas(titik1, titik_terjauh, titik1atas)
+    #convex_hull_atas = convex_hull_atas + convex_hull_atas(titik_terjauh, titik2, titik2atas)
+
+    return convex_hull_bawah
 
 def jarak_titik_ke_garis(titik1, titik2, titik3):
   
