@@ -1,6 +1,7 @@
 # Tugas Kecil Strategi Algoritma 2
 Implementasi Convex Hull untuk Visualisasi Tes Linear Separability Dataset 
 dengan Algoritma  _Divide and Conquer_
+![output](output.png)
 
 
 ## Deskripsi Singkat Program yang Dibuat
